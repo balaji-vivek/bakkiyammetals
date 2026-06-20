@@ -2,7 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
-  const { cartCount, setIsCartOpen } = useCart();
+  const { cartCount, isCartOpen, toggleCart } = useCart();
 
   return (
     <nav className="navbar">
@@ -14,7 +14,13 @@ const Navbar = () => {
       <div style={{ flex: 1 }} />
 
       <div className="nav-actions">
-        <button className="cart-button" onClick={() => setIsCartOpen(true)}>
+        <button
+          className="cart-button"
+          onClick={toggleCart}
+          aria-expanded={isCartOpen}
+          aria-controls="cart-sidebar"
+          type="button"
+        >
           <ShoppingCart size={20} />
           <span className="cart-label">Cart</span>
 
